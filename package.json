@@ -1,0 +1,30 @@
+{
+  "name": "dsh-sandbox-temp-guard",
+  "version": "0.1.0",
+  "description": "Self-healing guard for the DeepSeek Harness Windows ACL sandbox: recreates the per-session private temp directory when OS temp cleanup removes it, and annotates backend-unavailable failures so agents stop escalating permissions. Stopgap for deepseek-ai/deepseek-harness Discussion #8550.",
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src/index.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "sandbox",
+    "windows-acl"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsm000/dsh-sandbox-temp-guard.git"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
