@@ -1,0 +1,12 @@
+# cordis.patch.yml — layer contributed by the dsh-sandbox-temp-guard bundle.
+# `id` must equal `export const name` in src/index.js; `name` is the npm package name.
+- insert:
+    - id: sandbox-temp-guard
+      name: dsh-sandbox-temp-guard
+      config:
+        # Recreate missing sandbox temp directories before every tool execution.
+        repairBeforeToolExecution: true
+        # Periodic sweep interval in ms (0 disables the timer).
+        sweepIntervalMs: 60000
+        # Append a remediation block to tool results that carry SANDBOX_UNAVAILABLE.
+        annotateBackendFailure: true
