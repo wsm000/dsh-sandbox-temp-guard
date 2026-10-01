@@ -47,7 +47,11 @@ Storage Sense / 清理工具 / 手动删除把这个目录清掉：
 任选其一（版本以 DSH 0.1.7-rc.2 实测，安装机制来自官方 `dsh plugin`）：
 
 ```sh
-# npm（发布后）
+# GitHub 源（未发布 npm 时的默认路径；DSH-Plugins-Marketplace 等市场的
+# topic:dsh-plugin 收录插件，一键安装走的也是这个 spec）
+npx @deepseek-ai/dsh plugin --profile desktop add github:wsm000/dsh-sandbox-temp-guard
+
+# npm（若本插件已发布到 npm；市场对已发布 npm 的插件会优先走 npm，更快更稳）
 npx @deepseek-ai/dsh plugin --profile desktop add dsh-sandbox-temp-guard
 
 # 本地 tarball（开发/内测）
@@ -56,7 +60,7 @@ npx @deepseek-ai/dsh plugin --profile desktop remove dsh-sandbox-temp-guard   # 
 npx @deepseek-ai/dsh plugin --profile desktop add ./dsh-sandbox-temp-guard-0.1.0.tgz
 ```
 
-源码直载 overlay（插件零运行时依赖，可用此方式热加载）：
+本插件零运行时依赖，`file:///` 源码 overlay 亦可加载：
 
 ```yaml
 # dev.patch.yml
@@ -131,8 +135,15 @@ that session then fails until DSH restarts**.
 **Install** (DSH ≥ 0.1.7-rc.2, verified on 0.1.7-rc.2):
 
 ```sh
-npx @deepseek-ai/dsh plugin --profile desktop add dsh-sandbox-temp-guard   # npm
-npx @deepseek-ai/dsh plugin --profile desktop add ./dsh-sandbox-temp-guard-0.1.0.tgz   # tarball
+# GitHub source (default path while the plugin is not on npm; the topic:dsh-plugin
+# marketplaces one-click-install through the same spec)
+npx @deepseek-ai/dsh plugin --profile desktop add github:wsm000/dsh-sandbox-temp-guard
+
+# npm (once published; marketplaces prefer the npm package when it exists)
+npx @deepseek-ai/dsh plugin --profile desktop add dsh-sandbox-temp-guard
+
+# local tarball
+npx @deepseek-ai/dsh plugin --profile desktop add ./dsh-sandbox-temp-guard-0.1.0.tgz
 ```
 
 Source-overlay (`--patch`) install works too — the plugin has **zero runtime
